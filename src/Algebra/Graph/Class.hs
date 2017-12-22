@@ -153,6 +153,14 @@ The class of /preorder graphs/ that are both reflexive and transitive.
 -}
 class (Reflexive g, Transitive g) => Preorder g
 
+{-|
+The class of /bipartite graphs/ that splits vertices into two partitions A and B
+and satisfies the following axiom
+
+  * u + v = u * v for all u,v \in A or u,v \in B
+-}
+class Graph g => Bigraph g
+
 instance Graph () where
     type Vertex () = ()
     empty          = ()

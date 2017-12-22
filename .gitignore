@@ -21,3 +21,7 @@ cabal.project.local
 .ghci
 ghcid.txt
 .vscode/
+.idea
+*.iml
+cabal.config
+out/

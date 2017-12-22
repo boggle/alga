@@ -60,6 +60,7 @@ library
                         Algebra.Graph.Export,
                         Algebra.Graph.Export.Dot,
                         Algebra.Graph.Fold,
+                        Algebra.Graph.Bigraph,
                         Algebra.Graph.HigherKinded.Class,
                         Algebra.Graph.IntAdjacencyMap,
                         Algebra.Graph.IntAdjacencyMap.Internal,

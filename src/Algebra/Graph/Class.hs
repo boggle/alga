@@ -37,6 +37,9 @@ module Algebra.Graph.Class (
     -- * Preorders
     Preorder,
 
+    -- * Bipartite
+    Bipartite,
+
     -- * Basic graph construction primitives
     edge, vertices, overlays, connects, edges,
 
@@ -159,7 +162,7 @@ and satisfies the following axiom
 
   * u + v = u * v for all u,v \in A or u,v \in B
 -}
-class Graph g => Bigraph g
+class Graph g => Bipartite g
 
 instance Graph () where
     type Vertex () = ()

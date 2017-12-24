@@ -1,5 +1,7 @@
 module Algebra.Graph.Bigraph (
-  Bigraph
+  Bigraph,
+
+  Choose, choose
 ) where
 
 import Prelude ()
@@ -59,3 +61,9 @@ instance (C.Graph g, C.Vertex g ~ a, C.ToGraph g, C.ToVertex g ~ a, Choose a) =>
       edges = (if balance base <= 0 then connectLeft else connectRight) (left l) (right r)
       connectLeft l r = G.foldg C.empty (\v -> C.vertex v `C.connect` r) C.overlay C.connect (C.toGraph l)
       connectRight l r = G.foldg C.empty (\v -> l `C.connect` C.vertex v) C.overlay C.connect (C.toGraph r)
+
+instance (C.Graph (Bigraph g a)) => C.Bipartite (Bigraph g a)
+
+instance (C.ToGraph g, C.ToVertex g ~ a) => C.ToGraph (Bigraph g a) where
+  type ToVertex (Bigraph g a) = a
+  toGraph big = C.toGraph (graph big)

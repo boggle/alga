@@ -160,7 +160,7 @@ class (Reflexive g, Transitive g) => Preorder g
 The class of /bipartite graphs/ that splits vertices into two partitions A and B
 and satisfies the following axiom
 
-  * u + v = u * v for all u,v \in A or u,v \in B
+> u + v = u * v for all u,v \in A or u,v \in B
 -}
 class Graph g => Bipartite g
 
@@ -175,6 +175,7 @@ instance Undirected ()
 instance Reflexive  ()
 instance Transitive ()
 instance Preorder   ()
+instance Bipartite  ()
 
 -- Note: Maybe g and (a -> g) instances are identical and use the Applicative's
 -- pure and <*>. We do not provide a general instance for all Applicative
@@ -190,6 +191,7 @@ instance Undirected g => Undirected (Maybe g)
 instance Reflexive  g => Reflexive  (Maybe g)
 instance Transitive g => Transitive (Maybe g)
 instance Preorder   g => Preorder   (Maybe g)
+instance Bipartite  g => Bipartite  (Maybe g)
 
 instance Graph g => Graph (a -> g) where
     type Vertex (a -> g) = Vertex g
@@ -202,6 +204,7 @@ instance Undirected g => Undirected (a -> g)
 instance Reflexive  g => Reflexive  (a -> g)
 instance Transitive g => Transitive (a -> g)
 instance Preorder   g => Preorder   (a -> g)
+instance Bipartite  g => Bipartite  (a -> g)
 
 instance (Graph g, Graph h) => Graph (g, h) where
     type Vertex (g, h)        = (Vertex g     , Vertex h     )
@@ -214,6 +217,7 @@ instance (Undirected g, Undirected h) => Undirected (g, h)
 instance (Reflexive  g, Reflexive  h) => Reflexive  (g, h)
 instance (Transitive g, Transitive h) => Transitive (g, h)
 instance (Preorder   g, Preorder   h) => Preorder   (g, h)
+instance (Bipartite  g, Bipartite  h) => Bipartite  (g, h)
 
 instance (Graph g, Graph h, Graph i) => Graph (g, h, i) where
     type Vertex (g, h, i)             = (Vertex g     , Vertex h     , Vertex i     )
@@ -226,6 +230,7 @@ instance (Undirected g, Undirected h, Undirected i) => Undirected (g, h, i)
 instance (Reflexive  g, Reflexive  h, Reflexive  i) => Reflexive  (g, h, i)
 instance (Transitive g, Transitive h, Transitive i) => Transitive (g, h, i)
 instance (Preorder   g, Preorder   h, Preorder   i) => Preorder   (g, h, i)
+instance (Bipartite  g, Bipartite  h, Bipartite  i) => Bipartite  (g, h, i)
 
 -- | Construct the graph comprising a single edge.
 -- Complexity: /O(1)/ time, memory and size.

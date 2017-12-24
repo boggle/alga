@@ -36,6 +36,9 @@ module Algebra.Graph.HigherKinded.Class (
     -- * Preorders
     Preorder,
 
+    -- * Bipartite
+    Bipartite,
+
     -- * Basic graph construction primitives
     edge, vertices, edges, overlays, connects,
 
@@ -187,6 +190,14 @@ class Graph g => Transitive g
 The class of /preorder graphs/ that are both reflexive and transitive.
 -}
 class (Reflexive g, Transitive g) => Preorder g
+
+{-|
+The class of /bipartite graphs/ that splits vertices into two partitions A and B
+and satisfies the following axiom
+
+> u + v = u * v for all u,v \in A or u,v \in B
+-}
+class Graph g => Bipartite g
 
 -- | Construct the graph comprising a single edge.
 -- Complexity: /O(1)/ time, memory and size.
